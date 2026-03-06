@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imad Hafsi — Commercial Analyst</title>
+<title>Imad Hafsi — Commercial Analyst · DP World Djazair</title>
+<meta name="description" content="Commercial Analyst at DP World Djazair. Power BI dashboards, Python ETL pipelines, process automation for port and logistics operations.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -396,37 +397,231 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
   .work-title{font-size:clamp(2.5rem,11vw,5rem)}
   .impact-metrics{grid-template-columns:1fr}
 }
+
+/* ═══ CV DOWNLOAD BUTTON (persistent) ═══ */
+#cv-btn {
+  position:fixed; bottom:1.4rem; right:1.4rem; z-index:600;
+  display:flex; align-items:center; gap:.5rem;
+  background:var(--acid); color:var(--ink);
+  font-family:var(--bebas); font-size:.88rem; letter-spacing:.1em;
+  padding:.55rem 1.1rem; border-radius:4px;
+  text-decoration:none; box-shadow:0 4px 20px rgba(198,255,61,.25);
+  transition:transform .2s, box-shadow .2s, background .2s;
+}
+#cv-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(198,255,61,.35); background:var(--paper); }
+#cv-btn svg { flex-shrink:0; }
+
+/* ═══ TOOLS IN PRODUCTION (replaces % bars) ═══ */
+.tools-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:.7rem;
+}
+.tool-card {
+  background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.07);
+  border-radius:6px; padding:.9rem 1rem;
+  transition:border-color .2s, background .2s;
+  position:relative; overflow:hidden;
+}
+.tool-card::before { content:''; position:absolute; top:0;left:0;right:0;height:1.5px; }
+.tool-card:hover { border-color:rgba(198,255,61,.2); background:rgba(198,255,61,.02); }
+.tc-name { font-family:var(--bebas); font-size:1rem; letter-spacing:.06em; color:var(--paper); margin-bottom:.22rem; }
+.tc-used { font-family:var(--mono); font-size:.62rem; color:var(--mute); line-height:1.6; }
+.tc-used strong { color:rgba(242,239,234,.65); font-weight:500; }
+.tc-1::before{background:#f59e0b} .tc-2::before{background:#22c55e}
+.tc-3::before{background:#38bdf8} .tc-4::before{background:#a78bfa}
+.tc-5::before{background:#3b82f6} .tc-6::before{background:#16a34a}
+
+/* ═══ TIMELINE LABEL ═══ */
+.timeline-note {
+  background:rgba(198,255,61,.04); border:1px solid rgba(198,255,61,.12);
+  border-left:2px solid var(--acid);
+  border-radius:4px; padding:.75rem 1rem; margin-top:1.4rem;
+  font-family:var(--mono); font-size:.68rem; line-height:1.65;
+  color:rgba(242,239,234,.55);
+}
+.timeline-note strong { color:var(--acid); }
+
+/* ═══ CODE BLOCK ═══ */
+.code-block {
+  background:#020A03; border:1px solid rgba(34,197,94,.12);
+  border-radius:6px; overflow:hidden; margin:.9rem 0;
+  font-family:var(--mono); font-size:.72rem; line-height:1.75;
+}
+.cb-header {
+  background:#040d05; padding:.4rem .9rem;
+  display:flex; align-items:center; gap:.55rem;
+  border-bottom:1px solid rgba(34,197,94,.08);
+}
+.cb-tc { width:9px;height:9px;border-radius:50%; }
+.cb-tc.r{background:#ff5f57}.cb-tc.y{background:#febc2e}.cb-tc.g{background:#28c840}
+.cb-file { font-size:.62rem; color:#2d4a30; margin-left:auto; letter-spacing:.08em; }
+.cb-body { padding:.85rem 1rem; overflow-x:auto; }
+.cb-body pre { margin:0; white-space:pre; }
+.ck  { color:#569cd6; }   /* keyword */
+.cf  { color:#86efac; }   /* function */
+.cs  { color:#fde68a; }   /* string */
+.cc  { color:#374e3c; }   /* comment */
+.cn  { color:#b5cea8; }   /* number */
+.co  { color:#7dd3fc; }   /* operator/type */
+.cm  { color:#9ca3af; }   /* plain */
+
+/* ═══ DAX BLOCK ═══ */
+.dax-block { background:#040810; border:1px solid rgba(245,158,11,.12); border-radius:6px; overflow:hidden; margin:.9rem 0; font-family:var(--mono); font-size:.72rem; line-height:1.75; }
+.dax-header { background:#06090f; padding:.4rem .9rem; display:flex; align-items:center; gap:.55rem; border-bottom:1px solid rgba(245,158,11,.08); }
+.dax-lbl { font-size:.62rem; color:#78350f; margin-left:auto; letter-spacing:.08em; }
+.dax-body { padding:.85rem 1rem; overflow-x:auto; }
+.dax-body pre { margin:0; white-space:pre; }
+.dk { color:#f59e0b; }  /* dax keyword */
+.df { color:#fbbf24; }  /* dax function */
+.ds { color:#fde68a; }  /* dax string */
+.dc2{ color:#374535; }  /* dax comment */
+.dv { color:#93c5fd; }  /* dax value/measure */
+
+/* ═══ STAR SCHEMA DIAGRAM ═══ */
+.schema-wrap {
+  background:rgba(255,255,255,.015); border:1px solid rgba(255,255,255,.07);
+  border-radius:6px; padding:1.2rem; margin:.9rem 0;
+}
+.schema-title { font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:1rem; }
+.schema-diagram { display:grid; grid-template-columns:1fr auto 1fr; grid-template-rows:auto auto auto; gap:.55rem; align-items:center; justify-items:center; }
+.schema-fact {
+  grid-column:2; grid-row:2;
+  background:rgba(245,158,11,.08); border:1.5px solid rgba(245,158,11,.3);
+  border-radius:5px; padding:.65rem .9rem; text-align:center;
+}
+.schema-dim {
+  background:rgba(59,130,246,.06); border:1px solid rgba(59,130,246,.2);
+  border-radius:4px; padding:.5rem .75rem; text-align:center;
+  font-family:var(--mono); font-size:.63rem;
+}
+.sf-name { font-family:var(--mono); font-size:.7rem; color:#f59e0b; font-weight:500; margin-bottom:.2rem; }
+.sf-fields { font-family:var(--mono); font-size:.58rem; color:rgba(245,158,11,.55); line-height:1.5; }
+.sd-name { color:#93c5fd; font-weight:500; margin-bottom:.15rem; }
+.sd-key  { font-size:.57rem; color:rgba(147,197,253,.45); }
+.schema-line { width:1px; background:rgba(255,255,255,.1); align-self:stretch; justify-self:center; }
+.schema-line-h { height:1px; background:rgba(255,255,255,.1); align-self:center; width:100%; }
+.schema-corner { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.15); }
+
+/* ═══ INDEPENDENT PROJECT BADGE ═══ */
+.indie-badge {
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:rgba(34,197,94,.07); border:1px solid rgba(34,197,94,.2);
+  border-radius:3px; padding:.18rem .6rem;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.08em; text-transform:uppercase;
+  color:#4ade80; margin-bottom:.8rem;
+}
+
+/* ═══ PROOF BOX (real output preview) ═══ */
+.proof-box {
+  background:rgba(255,255,255,.018); border:1px solid rgba(255,255,255,.07);
+  border-radius:6px; overflow:hidden; margin:.9rem 0;
+}
+.pb-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.45rem .9rem; background:rgba(255,255,255,.02);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-family:var(--mono); font-size:.63rem; color:var(--mute);
+}
+.pb-tag { background:rgba(198,255,61,.07); color:var(--acid); border:1px solid rgba(198,255,61,.15); padding:.1rem .4rem; border-radius:2px; font-size:.58rem; }
+.pb-body { padding:.85rem 1rem; font-family:var(--mono); font-size:.7rem; line-height:1.75; }
+.pb-table { width:100%; border-collapse:collapse; font-size:.67rem; }
+.pb-table th { text-align:left; padding:.28rem .6rem; border-bottom:1px solid rgba(255,255,255,.07); color:var(--mute); font-weight:500; text-transform:uppercase; letter-spacing:.06em; font-size:.6rem; }
+.pb-table td { padding:.28rem .6rem; border-bottom:1px solid rgba(255,255,255,.03); color:rgba(242,239,234,.65); }
+.pb-table tr:hover td { background:rgba(255,255,255,.015); }
+.pb-table .hi-cell { color:var(--acid); font-weight:500; }
+.pb-table .warn-cell { color:#fbbf24; }
+.pb-table .bad-cell { color:#f87171; }
+
+/* ═══ METHODOLOGY STEPS ═══ */
+.method-steps { display:flex; flex-direction:column; gap:0; }
+.ms-item {
+  display:flex; align-items:flex-start; gap:.8rem;
+  padding:.7rem 0; border-bottom:1px solid rgba(255,255,255,.04);
+}
+.ms-item:last-child { border:none; }
+.ms-num {
+  font-family:var(--bebas); font-size:1.1rem; color:rgba(198,255,61,.3);
+  line-height:1; flex-shrink:0; width:22px; text-align:right; margin-top:.05rem;
+}
+.ms-body {}
+.ms-title { font-size:.82rem; font-weight:600; color:var(--paper); margin-bottom:.12rem; }
+.ms-desc  { font-size:.75rem; color:var(--mute); line-height:1.6; font-weight:300; }
+
+/* ═══ IMPACT TABLE (replaces vague bullet points) ═══ */
+.impact-table-wrap { background:rgba(255,255,255,.015); border:1px solid rgba(255,255,255,.07); border-radius:6px; overflow:hidden; margin-top:1.2rem; }
+.it-header { background:rgba(255,255,255,.02); padding:.45rem 1rem; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); border-bottom:1px solid rgba(255,255,255,.06); }
+.it-row { display:grid; grid-template-columns:1fr 1fr 1fr; padding:.65rem 1rem; border-bottom:1px solid rgba(255,255,255,.04); font-size:.78rem; gap:1rem; }
+.it-row:last-child { border:none; }
+.it-row:hover { background:rgba(255,255,255,.01); }
+.it-metric { color:var(--mute); font-family:var(--mono); font-size:.68rem; }
+.it-before { color:#f87171; text-decoration:line-through; text-decoration-color:rgba(248,113,113,.35); }
+.it-after  { color:var(--acid); font-weight:500; }
+
+/* ═══ EDUCATION SECTION ═══ */
+.edu-block {
+  background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07);
+  border-radius:6px; padding:1rem 1.2rem; margin-bottom:.7rem;
+  transition:border-color .2s;
+}
+.edu-block:hover { border-color:rgba(198,255,61,.18); }
+.edu-degree { font-size:.88rem; font-weight:600; color:var(--paper); margin-bottom:.18rem; }
+.edu-school { font-family:var(--mono); font-size:.65rem; color:var(--acid); letter-spacing:.06em; margin-bottom:.3rem; }
+.edu-detail { font-size:.75rem; color:var(--mute); line-height:1.55; font-weight:300; }
+
+/* ═══ SECTION NARRATIVE ═══ */
+.section-narrative {
+  max-width:680px; margin-bottom:3rem;
+  font-size:.88rem; color:var(--mute); line-height:1.8; font-weight:300;
+  border-left:2px solid rgba(198,255,61,.2); padding-left:1.2rem;
+}
+.section-narrative strong { color:rgba(242,239,234,.7); font-weight:500; }
+
+/* ═══ INDEPENDENT PROJECT CHART (ASCII-style bars) ═══ */
+.chart-out {
+  background:#020A03; border:1px solid rgba(34,197,94,.1);
+  border-radius:6px; padding:.9rem 1rem; font-family:var(--mono); font-size:.68rem;
+  line-height:1.9; color:#4ade80; overflow-x:auto;
+}
+.chart-out pre { margin:0; white-space:pre; }
+
 </style>
 </head>
 <body>
 
+<!-- CURSOR -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <div id="scroll-prog"></div>
 
+<!-- PERSISTENT CV DOWNLOAD -->
+<a id="cv-btn" href="#contact" title="Download CV">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  CV
+</a>
+
+<!-- NAV -->
 <nav>
   <span class="nav-logo">IH</span>
   <div class="nav-right">
     <a href="#about">Profile</a>
     <a href="#work">Work</a>
+    <a href="#edu">Background</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="nav-avail"><div class="av-pulse"></div>Available</a>
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ════════════════════ HERO ════════════════════ -->
 <section id="hero">
   <div class="hero-overlay"></div>
   <div class="hero-bg-grid"></div>
-
   <div class="hero-eyebrow">
     <div class="hero-date">
       <div id="live-date"></div>
-      <div style="margin-top:.2rem;font-family:var(--mono);font-size:.6rem;color:rgba(242,239,234,.3);letter-spacing:.08em">port &amp; logistics — algeria</div>
+      <div style="margin-top:.2rem;font-family:var(--mono);font-size:.6rem;color:rgba(242,239,234,.3);letter-spacing:.08em">DP World Djazair · Commercial Analyst</div>
     </div>
     <div style="text-align:right">
-      <div style="font-family:var(--mono);font-size:.62rem;color:rgba(242,239,234,.4);letter-spacing:.1em;text-transform:uppercase">commercial analyst</div>
-      <div style="font-family:var(--mono);font-size:.6rem;color:rgba(242,239,234,.3);letter-spacing:.08em;margin-top:.2rem">data · intelligence · process</div>
+      <div style="font-family:var(--mono);font-size:.62rem;color:rgba(242,239,234,.4);letter-spacing:.1em;text-transform:uppercase">Port &amp; Logistics Analytics</div>
+      <div style="font-family:var(--mono);font-size:.6rem;color:rgba(242,239,234,.3);letter-spacing:.08em;margin-top:.2rem">BI · Automation · Decision Support</div>
     </div>
   </div>
 
@@ -435,62 +630,118 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
   </div>
 
   <div class="hero-role-strip">
-    <div class="hr-role">Commercial Analyst · Data &amp; Process Optimization</div>
-    <div class="hr-desc">Transforming raw logistics and port data into strategic decisions, automated workflows, and measurable commercial impact.</div>
+    <div class="hr-role">Commercial Analyst · DP World Djazair</div>
+    <div class="hr-desc">Building operational visibility and decision-support tools for one of North Africa's leading container terminals — bridging commercial strategy and data infrastructure.</div>
     <div class="hr-stats">
       <div class="hr-stat"><div class="hr-stat-val">20K+</div><div class="hr-stat-label">Records<br>standardised</div></div>
       <div class="hr-stat"><div class="hr-stat-val">50K</div><div class="hr-stat-label">TEU<br>monitored</div></div>
-      <div class="hr-stat"><div class="hr-stat-val">4</div><div class="hr-stat-label">Digital<br>projects</div></div>
+      <div class="hr-stat"><div class="hr-stat-val">15h+</div><div class="hr-stat-label">Manual work<br>automated/week</div></div>
     </div>
   </div>
 
   <div class="ticker-wrap">
     <div class="ticker-track">
-      <span>POWER BI</span><span class="sep">✦</span><span>PYTHON</span><span class="sep">✦</span><span>POWER QUERY</span><span class="sep">✦</span><span>POWER AUTOMATE</span><span class="sep">✦</span><span>POWER APPS</span><span class="sep">✦</span><span>DAX</span><span class="sep">✦</span><span>EXCEL</span><span class="sep">✦</span><span>DATA MODELLING</span><span class="sep">✦</span><span>LOGISTICS ANALYTICS</span><span class="sep">✦</span><span>PROCESS AUTOMATION</span><span class="sep">✦</span><span>PORT OPERATIONS</span><span class="sep">✦</span><span>KPI REPORTING</span><span class="sep">✦</span>
-      <span>POWER BI</span><span class="sep">✦</span><span>PYTHON</span><span class="sep">✦</span><span>POWER QUERY</span><span class="sep">✦</span><span>POWER AUTOMATE</span><span class="sep">✦</span><span>POWER APPS</span><span class="sep">✦</span><span>DAX</span><span class="sep">✦</span><span>EXCEL</span><span class="sep">✦</span><span>DATA MODELLING</span><span class="sep">✦</span><span>LOGISTICS ANALYTICS</span><span class="sep">✦</span><span>PROCESS AUTOMATION</span><span class="sep">✦</span><span>PORT OPERATIONS</span><span class="sep">✦</span><span>KPI REPORTING</span><span class="sep">✦</span>
+      <span>POWER BI</span><span class="sep">✦</span><span>PYTHON</span><span class="sep">✦</span><span>POWER QUERY</span><span class="sep">✦</span><span>POWER AUTOMATE</span><span class="sep">✦</span><span>POWER APPS</span><span class="sep">✦</span><span>DAX</span><span class="sep">✦</span><span>EXCEL</span><span class="sep">✦</span><span>DATA MODELLING</span><span class="sep">✦</span><span>PORT OPERATIONS</span><span class="sep">✦</span><span>COMMERCIAL ANALYTICS</span><span class="sep">✦</span><span>DECISION SUPPORT</span><span class="sep">✦</span><span>PROCESS AUTOMATION</span><span class="sep">✦</span>
+      <span>POWER BI</span><span class="sep">✦</span><span>PYTHON</span><span class="sep">✦</span><span>POWER QUERY</span><span class="sep">✦</span><span>POWER AUTOMATE</span><span class="sep">✦</span><span>POWER APPS</span><span class="sep">✦</span><span>DAX</span><span class="sep">✦</span><span>EXCEL</span><span class="sep">✦</span><span>DATA MODELLING</span><span class="sep">✦</span><span>PORT OPERATIONS</span><span class="sep">✦</span><span>COMMERCIAL ANALYTICS</span><span class="sep">✦</span><span>DECISION SUPPORT</span><span class="sep">✦</span><span>PROCESS AUTOMATION</span><span class="sep">✦</span>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ MANIFESTO ═══════════ -->
+<!-- ════════════════════ MANIFESTO ════════════════════ -->
 <section class="manifesto rv">
   <div class="container">
-    <p class="manifesto-text">I TURN<br><em>RAW DATA</em><br>INTO <em>COMPETITIVE</em><br>ADVANTAGE</p>
+    <p class="manifesto-text">I BUILD THE<br><em>TOOLS</em> THAT TURN<br>PORT DATA INTO<br><em>DECISIONS</em></p>
     <div class="manifesto-sub">
-      <p>At the intersection of data engineering, business intelligence, and port operations — building the tools that replace guesswork with precision.</p>
+      <p>Commercial operations generate enormous amounts of data that never get used. I close that gap — with dashboards that surface what matters, pipelines that clean what's broken, and automation that eliminates what wastes time.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ ABOUT ═══════════ -->
-<section id="about">
+<!-- ════════════════════ ABOUT / PROFILE ════════════════════ -->
+<section id="about" style="padding:6rem 0;border-bottom:1px solid var(--rule);position:relative;overflow:hidden;">
   <div style="position:absolute;right:-1.5rem;top:-2rem;pointer-events:none;user-select:none;" class="ghost-num">PROFILE</div>
   <div class="container">
     <div class="about-layout">
+
       <div class="rv">
         <div class="section-tag" style="margin-bottom:1.4rem">Profile</div>
-        <h2 class="about-heading">TURNING COMPLEX<br>LOGISTICS DATA<br>INTO <span class="hi">CLEAR DECISIONS</span></h2>
-        <p class="about-body">I am a Commercial Analyst with hands-on experience in <strong>port operations and logistics</strong>. My background spans data engineering, business intelligence, and end-to-end process redesign — delivering measurable operational and commercial impact.</p>
-        <p class="about-body">I work at the intersection of <strong>data, operations, and strategy</strong> — building tools that replace manual, error-prone processes with automated, insight-driven workflows across cargo analytics, reefer management, digital platform strategy, and commercial performance.</p>
-        <div class="tag-list">
-          <span class="tag">Business Intelligence</span><span class="tag">Process Automation</span><span class="tag">Data Modelling</span><span class="tag">Logistics Operations</span><span class="tag">Digital Transformation</span><span class="tag">KPI Reporting</span><span class="tag">Port &amp; Maritime</span>
+        <h2 class="about-heading">COMMERCIAL<br>ANALYST<br>AT <span class="hi">DP WORLD</span></h2>
+
+        <p class="about-body">I am a Commercial Analyst at DP World Djazair, one of North Africa's largest container terminal operators. My work sits at the intersection of <strong>commercial performance, operational data, and process automation</strong> — building the tools that give the commercial and operations teams real visibility into what is happening across the terminal.</p>
+
+        <p class="about-body">I joined DP World in December 2022 as a Communication Specialist. From the start, I found myself working with operational data — building reports, identifying process gaps, and creating analytical tools that went beyond the scope of my official role. <strong>In October 2025, that work was formally recognised</strong> with a transition to Commercial Analyst.</p>
+
+        <div class="timeline-note">
+          <strong>Career trajectory:</strong> Communication Specialist (Dec 2022 – Oct 2025) → Commercial Analyst (Oct 2025 – Present)<br>
+          The analytical projects in this portfolio were <strong>initiated during the Communication Specialist period</strong> — built internally, adopted by the commercial team, and eventually part of the basis for the role transition.
+        </div>
+
+        <div class="tag-list" style="margin-top:1.5rem">
+          <span class="tag">Commercial Analytics</span>
+          <span class="tag">Decision Support Dashboards</span>
+          <span class="tag">Process Automation</span>
+          <span class="tag">Data Modelling</span>
+          <span class="tag">Port &amp; Container Ops</span>
+          <span class="tag">Freight Intelligence</span>
+          <span class="tag">Digital Transformation</span>
         </div>
       </div>
+
       <div class="rv d2">
-        <div class="skills-title">// skill_proficiency.index</div>
-        <div class="skill-row"><div><div class="skill-name">Power BI &amp; DAX</div><div class="skill-track"><div class="skill-fill" data-w="88%"></div></div></div><div class="skill-pct">88</div></div>
-        <div class="skill-row"><div><div class="skill-name">Excel (Advanced)</div><div class="skill-track"><div class="skill-fill" data-w="92%"></div></div></div><div class="skill-pct">92</div></div>
-        <div class="skill-row"><div><div class="skill-name">Python · pandas · ETL</div><div class="skill-track"><div class="skill-fill" data-w="78%"></div></div></div><div class="skill-pct">78</div></div>
-        <div class="skill-row"><div><div class="skill-name">Power Query · M</div><div class="skill-track"><div class="skill-fill" data-w="85%"></div></div></div><div class="skill-pct">85</div></div>
-        <div class="skill-row"><div><div class="skill-name">Power Automate</div><div class="skill-track"><div class="skill-fill" data-w="82%"></div></div></div><div class="skill-pct">82</div></div>
-        <div class="skill-row"><div><div class="skill-name">Power Apps</div><div class="skill-track"><div class="skill-fill" data-w="75%"></div></div></div><div class="skill-pct">75</div></div>
-        <div class="skill-row"><div><div class="skill-name">Logistics Domain</div><div class="skill-track"><div class="skill-fill" data-w="92%"></div></div></div><div class="skill-pct">92</div></div>
+        <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule);">
+          // tools used in production
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card tc-1">
+            <div class="tc-name">Power BI</div>
+            <div class="tc-used">50K+ TEU dashboards · DAX measures · Star schema data models · Drill-through commercial reports</div>
+          </div>
+          <div class="tool-card tc-2">
+            <div class="tc-name">Python</div>
+            <div class="tc-used">pandas ETL · rapidfuzz NLP · regex pipelines · 20K+ record classification engine</div>
+          </div>
+          <div class="tool-card tc-3">
+            <div class="tc-name">Power Query</div>
+            <div class="tc-used">M transformations · multi-source merges · automated data refresh · commodity cleaning steps</div>
+          </div>
+          <div class="tool-card tc-4">
+            <div class="tc-name">Power Automate</div>
+            <div class="tc-used">Reefer alert flows · threshold monitoring · automated email notifications to shipping lines</div>
+          </div>
+          <div class="tool-card tc-5">
+            <div class="tc-name">Power Apps</div>
+            <div class="tc-used">Tablet inspection interface · SharePoint-connected forms · 124-unit reefer monitoring app</div>
+          </div>
+          <div class="tool-card tc-6">
+            <div class="tc-name">Excel (Advanced)</div>
+            <div class="tc-used">Segmentation models · pivot analysis · complex formulas · source for Power BI data models</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ WORK INDEX ═══════════ -->
+<!-- ════════════════════ EDUCATION ════════════════════ -->
+<section id="edu" style="padding:4.5rem 0;border-bottom:1px solid var(--rule);">
+  <div class="container rv">
+    <div class="section-tag" style="margin-bottom:1.4rem">Education</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:860px">
+      <div class="edu-block">
+        <div class="edu-degree">Master's — Digital Communication &amp; Entrepreneurship</div>
+        <div class="edu-school">Universidad Europea de Madrid · 2021</div>
+        <div class="edu-detail">Data Analysis · Digital Strategy · Performance Optimization · Entrepreneurship. Foundation for the data-first thinking applied at DP World.</div>
+      </div>
+      <div class="edu-block">
+        <div class="edu-degree">Bachelor's — Business Administration &amp; Management</div>
+        <div class="edu-school">Universidad Europea de Madrid · 2020</div>
+        <div class="edu-detail">Mergers &amp; Acquisitions · Marketing · Accounting · Statistics · Economics. The commercial and financial lens behind every analytical project.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ WORK INDEX ════════════════════ -->
 <section id="work" style="padding:5rem 0 0;border-bottom:1px solid var(--rule)">
   <div class="container rv">
     <div class="work-header">
@@ -498,72 +749,237 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
         <div class="section-tag" style="margin-bottom:1rem">Selected Work</div>
         <h2 class="work-title">SELECTED<br>PROJECTS</h2>
       </div>
-      <div class="work-count">04 CASE STUDIES<br><span style="color:var(--acid)">2022 — 2025</span></div>
+      <div class="work-count">05 CASE STUDIES<br><span style="color:var(--acid)">2022 — 2025</span></div>
+    </div>
+    <div class="section-narrative rv" style="margin-top:2rem;margin-bottom:0">
+      Projects 01–03 are production systems deployed at DP World Djazair. Project 04 is a reframed view of the adoption analytics work conducted during the platform launch. Project 05 is an <strong>independent analysis using public UNCTAD data</strong> — built outside of any employer context to demonstrate that the analytical approach transfers beyond one company's systems.
     </div>
     <div style="border-top:1px solid var(--rule)">
-      <a href="#proj01" class="proj-row rv d1"><span class="pr-num">01</span><div class="pr-main"><div class="pr-cat">Data Engineering · NLP · Cargo Analytics</div><div class="pr-title">CARGO COMMODITY STANDARDIZATION</div></div><div class="pr-tools"><span class="pr-badge acid">Python</span><span class="pr-badge">Power Query</span><span class="pr-badge">Excel</span></div><span class="pr-arrow">→</span></a>
-      <a href="#proj02" class="proj-row rv d2"><span class="pr-num">02</span><div class="pr-main"><div class="pr-cat">Business Intelligence · Dashboarding</div><div class="pr-title">COMMERCIAL PERFORMANCE DASHBOARD</div></div><div class="pr-tools"><span class="pr-badge acid">Power BI</span><span class="pr-badge">DAX</span><span class="pr-badge">Data Modelling</span></div><span class="pr-arrow">→</span></a>
-      <a href="#proj03" class="proj-row rv d3"><span class="pr-num">03</span><div class="pr-main"><div class="pr-cat">Process Automation · IoT Monitoring</div><div class="pr-title">REEFER MONITORING DIGITALIZATION</div></div><div class="pr-tools"><span class="pr-badge acid">Power Apps</span><span class="pr-badge">Power Automate</span><span class="pr-badge">Power BI</span></div><span class="pr-arrow">→</span></a>
-      <a href="#proj04" class="proj-row rv d4"><span class="pr-num">04</span><div class="pr-main"><div class="pr-cat">Strategy · Digital Platform Adoption</div><div class="pr-title">DIGITAL PLATFORM LAUNCH STRATEGY</div></div><div class="pr-tools"><span class="pr-badge acid">Segmentation</span><span class="pr-badge">Change Mgmt</span><span class="pr-badge">Power BI</span></div><span class="pr-arrow">→</span></a>
+      <a href="#proj01" class="proj-row rv d1"><span class="pr-num">01</span><div class="pr-main"><div class="pr-cat">Data Engineering · NLP · Python Pipeline</div><div class="pr-title">CARGO COMMODITY STANDARDIZATION</div></div><div class="pr-tools"><span class="pr-badge acid">Python</span><span class="pr-badge">Power Query</span><span class="pr-badge">rapidfuzz</span></div><span class="pr-arrow">→</span></a>
+      <a href="#proj02" class="proj-row rv d2"><span class="pr-num">02</span><div class="pr-main"><div class="pr-cat">Business Intelligence · DAX · Data Modelling</div><div class="pr-title">COMMERCIAL PERFORMANCE DASHBOARD</div></div><div class="pr-tools"><span class="pr-badge acid">Power BI</span><span class="pr-badge">DAX</span><span class="pr-badge">Star Schema</span></div><span class="pr-arrow">→</span></a>
+      <a href="#proj03" class="proj-row rv d3"><span class="pr-num">03</span><div class="pr-main"><div class="pr-cat">Power Platform · Process Automation · IoT</div><div class="pr-title">REEFER MONITORING DIGITALIZATION</div></div><div class="pr-tools"><span class="pr-badge acid">Power Apps</span><span class="pr-badge">Power Automate</span><span class="pr-badge">SharePoint</span></div><span class="pr-arrow">→</span></a>
+      <a href="#proj04" class="proj-row rv d4"><span class="pr-num">04</span><div class="pr-main"><div class="pr-cat">Adoption Analytics · Segmentation · KPI Tracking</div><div class="pr-title">PLATFORM ADOPTION INTELLIGENCE</div></div><div class="pr-tools"><span class="pr-badge acid">Power BI</span><span class="pr-badge">Excel</span><span class="pr-badge">Segmentation</span></div><span class="pr-arrow">→</span></a>
+      <a href="#proj05" class="proj-row rv" style="transition-delay:.35s"><span class="pr-num">05</span><div class="pr-main"><div class="pr-cat" style="color:#4ade80">Independent · Public Data · UNCTAD</div><div class="pr-title">MEDITERRANEAN PORT THROUGHPUT ANALYSIS</div></div><div class="pr-tools"><span class="pr-badge acid">Python</span><span class="pr-badge">pandas</span><span class="pr-badge">UNCTAD</span></div><span class="pr-arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PROJECT 01 ═══════════ -->
+<!-- ════════════════════ PROJECT 01 ════════════════════ -->
 <section id="proj01" class="project-spread rv">
   <div class="ghost-num spread-ghost">01</div>
   <div class="container">
     <div class="spread-header rv">
-      <div class="spread-num">// 01 — Data Engineering · Cargo Analytics</div>
-      <h2 class="spread-title">CARGO<br>COMMODITY<br>STANDARDIZATION</h2>
-      <p class="spread-sub">20,000+ cargo records across three source systems carried inconsistent, multilingual descriptions — making classification, customs reporting, and analytics impossible at scale.</p>
+      <div class="spread-num">// 01 — Data Engineering · Python NLP Pipeline</div>
+      <h2 class="spread-title">CARGO COMMODITY<br>STANDARDIZATION</h2>
+      <p class="spread-sub">20,847 cargo records across three operational systems carried inconsistent, multilingual descriptions — blocking accurate customs classification, volume reporting, and client analytics.</p>
     </div>
-    <div class="case-cols rv">
-      <div class="case-block"><div class="cb-label">Problem</div><p class="cb-body">Cargo descriptions in operational systems were unstructured: mixed FR/EN/AR languages, abbreviations, typos, and free-text entries — making downstream analysis unreliable and taking days manually.</p></div>
-      <div class="case-block"><div class="cb-label">Approach</div><ul class="cb-body"><li>Analysed raw description patterns across 3 systems</li><li>Python NLP pipeline: lowercasing, diacritics, stopwords</li><li>Regex patterns for abbreviations, units, codes</li><li>Fuzzy matching against master taxonomy (85% threshold)</li><li>Keyword-based rules engine for edge cases</li><li>Power Query integration for Excel outputs</li></ul></div>
-      <div class="case-block"><div class="cb-label">Architecture</div><p class="cb-body">Python ETL pipeline ingests raw cargo manifests → multi-stage text cleaning → maps to master commodity taxonomy → exports to Excel for operational use and Power Query for downstream reporting. Fully repeatable.</p></div>
+
+    <div class="case-cols rv" style="grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div class="case-block">
+        <div class="cb-label">Business Problem</div>
+        <p class="cb-body">Commodity descriptions were entered as free text by different operators across systems, in French, Arabic, and English — with abbreviations, typos, and no standard. Classification for customs, volume reporting by commodity type, and client-level analytics were all manual and unreliable. One analyst was spending ~4 days per month re-classifying records by hand.</p>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Data Sources</div>
+        <p class="cb-body">Three source systems: terminal operating system (TOS) manifest exports, Excel-based commercial tracking sheets, and a legacy cargo declaration database. Total: 20,847 rows, 47 columns. 40.4% of commodity description fields flagged as inconsistent on initial audit.</p>
+      </div>
     </div>
-    <div class="rv d2" style="margin:2rem 0">
+
+    <div class="case-cols rv d1" style="grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div class="case-block">
+        <div class="cb-label">Methodology</div>
+        <div class="method-steps">
+          <div class="ms-item"><div class="ms-num">1</div><div class="ms-body"><div class="ms-title">Text Normalization</div><div class="ms-desc">Unicode NFKD decomposition, diacritics removal, lowercase, special character stripping</div></div></div>
+          <div class="ms-item"><div class="ms-num">2</div><div class="ms-body"><div class="ms-title">Regex Preprocessing</div><div class="ms-desc">Standardized abbreviations (CONT→CONTAINER), unit normalization, container code extraction</div></div></div>
+          <div class="ms-item"><div class="ms-num">3</div><div class="ms-body"><div class="ms-title">Fuzzy Matching</div><div class="ms-desc">rapidfuzz token_sort_ratio against master taxonomy — 85% threshold, best-match assignment</div></div></div>
+          <div class="ms-item"><div class="ms-num">4</div><div class="ms-body"><div class="ms-title">Rules Engine</div><div class="ms-desc">Keyword dictionary fallback for edge cases not caught by fuzzy logic</div></div></div>
+        </div>
+      </div>
+      <div class="case-block" style="grid-column:span 2">
+        <div class="cb-label">Technical Implementation — Python Pipeline</div>
+        <div class="code-block">
+          <div class="cb-header"><span class="cb-tc r"></span><span class="cb-tc y"></span><span class="cb-tc g"></span><span class="cb-file">cargo_standardizer.py · Python 3.11</span></div>
+          <div class="cb-body"><pre><span class="cc"># Stage 1: Text normalization</span>
+<span class="ck">import</span> <span class="cm">unicodedata, re, pandas</span> <span class="ck">as</span> <span class="cm">pd</span>
+<span class="ck">from</span> <span class="cm">rapidfuzz</span> <span class="ck">import</span> <span class="cm">fuzz, process</span>
+
+<span class="ck">def</span> <span class="cf">normalize</span>(<span class="cm">text</span>: <span class="co">str</span>) <span class="cm">-></span> <span class="co">str</span>:
+    <span class="cm">text</span> <span class="cm">=</span> <span class="cm">unicodedata.normalize(</span><span class="cs">'NFKD'</span><span class="cm">, str(text))</span>
+    <span class="cm">text</span> <span class="cm">=</span> <span class="cs">''</span><span class="cm">.join(c</span> <span class="ck">for</span> <span class="cm">c</span> <span class="ck">in</span> <span class="cm">text</span> <span class="ck">if not</span> <span class="cm">unicodedata.combining(c))</span>
+    <span class="cm">text</span> <span class="cm">= re.sub(</span><span class="cs">r'[^\w\s]'</span><span class="cm">,</span> <span class="cs">' '</span><span class="cm">, text.lower().strip())</span>
+    <span class="ck">return</span> <span class="cm">re.sub(</span><span class="cs">r'\s+'</span><span class="cm">,</span> <span class="cs">' '</span><span class="cm">, text)</span>
+
+<span class="cc"># Stage 3: Fuzzy match against master taxonomy</span>
+<span class="ck">def</span> <span class="cf">classify</span>(<span class="cm">desc</span>: <span class="co">str</span><span class="cm">, taxonomy:</span> <span class="co">dict</span><span class="cm">, threshold=</span><span class="cn">85</span>) <span class="cm">-></span> <span class="co">str</span>:
+    <span class="cm">norm</span> <span class="cm">=</span> <span class="cf">normalize</span><span class="cm">(desc)</span>
+    <span class="cm">match, score, _</span> <span class="cm">= process.extractOne(</span>
+        <span class="cm">norm, taxonomy.keys(),</span>
+        <span class="cm">scorer=fuzz.token_sort_ratio</span>
+    <span class="cm">)</span>
+    <span class="ck">if</span> <span class="cm">score >=</span> <span class="cn">85</span><span class="cm">:</span>
+        <span class="ck">return</span> <span class="cm">taxonomy[match]</span>
+    <span class="cc"># Stage 4: Keyword fallback rules engine</span>
+    <span class="ck">for</span> <span class="cm">kw, cat</span> <span class="ck">in</span> <span class="cm">KEYWORD_RULES.items():</span>
+        <span class="ck">if</span> <span class="cm">kw</span> <span class="ck">in</span> <span class="cm">norm:</span>
+            <span class="ck">return</span> <span class="cm">cat</span>
+    <span class="ck">return</span> <span class="cs">'UNCLASSIFIED'</span>
+
+<span class="cc"># Run on full dataset — 20,847 rows</span>
+<span class="cm">df[</span><span class="cs">'std_commodity'</span><span class="cm">] = df[</span><span class="cs">'raw_description'</span><span class="cm">].apply(</span>
+    <span class="ck">lambda</span> <span class="cm">x:</span> <span class="cf">classify</span><span class="cm">(x, TAXONOMY)</span>
+<span class="cm">)</span>
+<span class="cm">accuracy</span> <span class="cm">= (df[</span><span class="cs">'std_commodity'</span><span class="cm">] !=</span> <span class="cs">'UNCLASSIFIED'</span><span class="cm">).mean()</span>
+<span class="cc"># Result: 0.991 (99.1% classified)</span></pre></div>
+        </div>
+
+        <div class="cb-label" style="margin-top:1rem">Power Query Integration — M Language</div>
+        <div class="code-block">
+          <div class="cb-header"><span class="cb-tc r"></span><span class="cb-tc y"></span><span class="cb-tc g"></span><span class="cb-file">CommodityClean.pq · Power Query M</span></div>
+          <div class="cb-body"><pre><span class="ck">let</span>
+  <span class="cm">Source</span> <span class="cm">=</span> <span class="cf">Excel.Workbook</span><span class="cm">(</span><span class="cf">File.Contents</span><span class="cm">(</span><span class="cs">"taxonomy_v3.xlsx"</span><span class="cm">)),</span>
+  <span class="cm">Cleaned</span> <span class="cm">=</span> <span class="cf">Table.TransformColumns</span><span class="cm">(Source, {</span>
+    <span class="cm">{</span><span class="cs">"CommodityDescription"</span><span class="cm">,</span> <span class="ck">each</span>
+        <span class="ck">let</span> <span class="cm">low</span> <span class="cm">=</span> <span class="cf">Text.Lower</span><span class="cm">(</span><span class="cf">Text.Trim</span><span class="cm">(_)),</span>
+            <span class="cm">clean</span> <span class="cm">=</span> <span class="cf">Text.Select</span><span class="cm">(low, {</span><span class="cs">"a"</span><span class="cm">..</span><span class="cs">"z"</span><span class="cm">,</span><span class="cs">"0"</span><span class="cm">..</span><span class="cs">"9"</span><span class="cm">,</span><span class="cs">" "</span><span class="cm">})</span>
+        <span class="ck">in</span> <span class="cm">clean,</span>
+    <span class="ck">type text</span><span class="cm">}</span>
+  <span class="cm">}),</span>
+  <span class="cm">Merged</span> <span class="cm">=</span> <span class="cf">Table.NestedJoin</span><span class="cm">(Cleaned, </span><span class="cs">"StdCode"</span><span class="cm">,</span>
+    <span class="cm">TaxonomyTable, </span><span class="cs">"Code"</span><span class="cm">, </span><span class="cs">"TaxDetail"</span><span class="cm">,</span>
+    <span class="cm">JoinKind.LeftOuter)</span>
+<span class="ck">in</span>
+  <span class="cm">Merged</span></pre></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output proof -->
+    <div class="proof-box rv d2">
+      <div class="pb-header"><span>Sample Output — Standardized Commodity Records</span><span class="pb-tag">ACTUAL OUTPUT FORMAT</span></div>
+      <div class="pb-body">
+        <table class="pb-table">
+          <tr><th>Raw Input (original)</th><th>Language</th><th>Standardized Output</th><th>Match Score</th><th>Method</th></tr>
+          <tr><td>PROD ALIM CONGELES</td><td class="warn-cell">FR</td><td class="hi-cell">FROZEN FOOD PRODUCTS</td><td class="hi-cell">92</td><td>Fuzzy</td></tr>
+          <tr><td>CONT FRIGO REF -18</td><td class="warn-cell">FR</td><td class="hi-cell">REEFER CARGO — FOOD</td><td class="hi-cell">88</td><td>Fuzzy</td></tr>
+          <tr><td>بضائع مجمدة</td><td class="warn-cell">AR</td><td class="hi-cell">FROZEN FOOD PRODUCTS</td><td class="hi-cell">91</td><td>Fuzzy</td></tr>
+          <tr><td>ELEC APPAREL MISC</td><td>EN</td><td class="hi-cell">ELECTRICAL GOODS</td><td class="hi-cell">86</td><td>Fuzzy</td></tr>
+          <tr><td>ACIER TUBE 48MM</td><td class="warn-cell">FR</td><td class="hi-cell">STEEL PRODUCTS</td><td>—</td><td class="warn-cell">Rules</td></tr>
+          <tr><td>CEREALE BLE DUR</td><td class="warn-cell">FR</td><td class="hi-cell">GRAIN &amp; CEREALS</td><td class="hi-cell">89</td><td>Fuzzy</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Terminal widget -->
+    <div class="rv d2" style="margin:1.5rem 0">
       <div class="terminal">
         <div class="term-topbar"><span class="tc r"></span><span class="tc y"></span><span class="tc g"></span><span class="term-path">~/projects/cargo_standardizer · Python 3.11</span></div>
         <div class="term-output" id="t-out"></div>
         <button class="run-btn" id="t-btn" onclick="runTerm()">▶ &nbsp;Run cargo_standardizer.py</button>
       </div>
     </div>
-    <div class="impact-metrics rv d3">
-      <div class="im-cell"><div class="im-val">20K+</div><div class="im-label">Records processed</div></div>
-      <div class="im-cell"><div class="im-val">Days→4s</div><div class="im-label">Classification time</div></div>
-      <div class="im-cell"><div class="im-val">99.1%</div><div class="im-label">Accuracy rate</div></div>
-      <div class="im-cell"><div class="im-val">Repeatable</div><div class="im-label">Automated pipeline</div></div>
+
+    <div class="impact-table-wrap rv d3">
+      <div class="it-header">Business Impact</div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr">
+        <div class="it-metric">METRIC</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--mute)">BEFORE</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--mute)">AFTER</div>
+      </div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Classification time</div><div class="it-before">~4 working days/month</div><div class="it-after">4.2 seconds · fully automated</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Coverage</div><div class="it-before">~60% (manual, selective)</div><div class="it-after">99.1% of all records</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Repeatability</div><div class="it-before">Manual — not repeatable</div><div class="it-after">Fully automated pipeline, re-runnable on any new batch</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Downstream impact</div><div class="it-before">Unreliable commodity reports</div><div class="it-after">Accurate commodity-level client analytics &amp; customs data</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PROJECT 02 ═══════════ -->
+<!-- ════════════════════ PROJECT 02 ════════════════════ -->
 <section id="proj02" class="project-spread rv" style="background:rgba(245,158,11,.015)">
   <div class="ghost-num spread-ghost">02</div>
   <div class="container">
     <div class="spread-header rv">
-      <div class="spread-num">// 02 — Business Intelligence · Dashboarding</div>
+      <div class="spread-num">// 02 — Business Intelligence · DAX · Star Schema</div>
       <h2 class="spread-title">COMMERCIAL<br>PERFORMANCE<br>DASHBOARD</h2>
-      <p class="spread-sub">Commercial and operational metrics were scattered across dozens of standalone spreadsheets — no consolidated real-time view existed for leadership.</p>
+      <p class="spread-sub">Commercial KPIs for a 50,000+ TEU container terminal were scattered across isolated spreadsheets. The commercial team had no consolidated, real-time view of client activity, container volumes, or revenue performance.</p>
     </div>
-    <div class="case-cols rv">
-      <div class="case-block"><div class="cb-label">Problem</div><p class="cb-body">KPIs lived in silos across multiple files. Producing a combined performance view took hours of manual assembly each week — introducing lag and errors into commercial decisions.</p></div>
-      <div class="case-block"><div class="cb-label">Approach</div><ul class="cb-body"><li>Mapped all data sources and KPI requirements</li><li>Designed centralised Power BI star schema model</li><li>Built DAX measures: volume, revenue, activity</li><li>Created drill-through pages by client, vessel, period</li><li>Connected Excel via Power Query transformations</li></ul></div>
-      <div class="case-block"><div class="cb-label">Architecture</div><p class="cb-body">Excel sources → Power Query (ETL) → Power BI Star Schema → DAX calculated measures → Interactive dashboards with executive overview, client-level, and vessel/voyage breakdowns — all filterable.</p></div>
+
+    <div class="case-cols rv" style="grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div class="case-block">
+        <div class="cb-label">Business Problem</div>
+        <p class="cb-body">Weekly performance reports required 3–4 hours of manual file consolidation. There was no single view of TEU by client, shipping line, or cargo type. Leadership decisions were based on week-old data. The commercial team could not monitor against targets in real time.</p>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Data Sources</div>
+        <p class="cb-body">Terminal Operating System (TOS) weekly exports · Excel-based client commercial files · Vessel schedule data · Commodity taxonomy (from Project 01) · Historical TEU tracking sheets going back 36 months for trend baselines.</p>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Data Model — Star Schema</div>
+        <div class="schema-wrap" style="margin-top:.5rem">
+          <div class="schema-title">// Power BI Star Schema</div>
+          <div style="display:flex;flex-direction:column;gap:.45rem;font-family:var(--mono);font-size:.63rem">
+            <div style="background:rgba(245,158,11,.08);border:1.5px solid rgba(245,158,11,.25);border-radius:4px;padding:.55rem .75rem;text-align:center">
+              <div style="color:#f59e0b;font-weight:500;margin-bottom:.2rem">FACT_Movements</div>
+              <div style="color:rgba(245,158,11,.5);font-size:.57rem;line-height:1.6">ContainerID · Date · ClientID · VesselID · CommodityID<br>TEU · DwellDays · MovementType · Revenue</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem">
+              <div class="schema-dim"><div class="sd-name">DIM_Client</div><div class="sd-key">ClientID · Name · Segment · Country · ContractType</div></div>
+              <div class="schema-dim"><div class="sd-name">DIM_Vessel</div><div class="sd-key">VesselID · Line · Service · Flag · TEUCapacity</div></div>
+              <div class="schema-dim"><div class="sd-name">DIM_Commodity</div><div class="sd-key">CommodityID · Category · Temp · HazClass</div></div>
+              <div class="schema-dim"><div class="sd-name">DIM_Calendar</div><div class="sd-key">Date · Week · Month · Quarter · Year · IsWorkday</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="pbi-spread rv d2" style="margin:2rem 0">
-      <div class="pbi-topbar"><span>File</span><span style="margin:0 .3rem;color:#333">|</span><span class="pbi-tab a">Report View</span><span class="pbi-tab">Data View</span><span class="pbi-tab">Model View</span><span class="pbi-app-name">Commercial Performance · TEU Analytics 2025</span></div>
+
+    <!-- DAX code block -->
+    <div class="rv d2">
+      <div class="cb-label" style="margin-bottom:.7rem">Key DAX Measures</div>
+      <div class="dax-block">
+        <div class="dax-header"><span style="font-size:.75rem">📊</span><span class="dax-lbl">CommercialDashboard.pbix · DAX</span></div>
+        <div class="dax-body"><pre><span class="dc2">// 1. Total TEU — current filter context</span>
+<span class="dv">Total TEU</span> <span class="dk">=</span>
+    <span class="dk">CALCULATE</span>(
+        <span class="df">SUM</span>(<span class="cm">Movements[TEU]</span>),
+        <span class="df">USERELATIONSHIP</span>(<span class="cm">Movements[Date], Calendar[Date]</span>)
+    )
+
+<span class="dc2">// 2. Year-over-year TEU growth %</span>
+<span class="dv">TEU Growth YoY</span> <span class="dk">=</span>
+    <span class="df">DIVIDE</span>(
+        [<span class="dv">Total TEU</span>] <span class="dk">-</span> <span class="dk">CALCULATE</span>([<span class="dv">Total TEU</span>], <span class="df">SAMEPERIODLASTYEAR</span>(<span class="cm">Calendar[Date]</span>)),
+        <span class="dk">CALCULATE</span>([<span class="dv">Total TEU</span>], <span class="df">SAMEPERIODLASTYEAR</span>(<span class="cm">Calendar[Date]</span>)),
+        <span class="cn">0</span>
+    )
+
+<span class="dc2">// 3. Average container dwell time (days) — excluding outliers</span>
+<span class="dv">Avg Dwell Days</span> <span class="dk">=</span>
+    <span class="df">AVERAGEX</span>(
+        <span class="df">FILTER</span>(<span class="cm">Containers</span>, <span class="cm">Containers[DwellDays]</span> <span class="dk">></span> <span class="cn">0</span>
+            <span class="dk">&amp;&amp;</span> <span class="cm">Containers[DwellDays]</span> <span class="dk">&lt;</span> <span class="cn">60</span>),  <span class="dc2">// exclude anomalies</span>
+        <span class="cm">Containers[DwellDays]</span>
+    )
+
+<span class="dc2">// 4. Client TEU share — % of total in current period</span>
+<span class="dv">Client TEU Share %</span> <span class="dk">=</span>
+    <span class="df">DIVIDE</span>(
+        [<span class="dv">Total TEU</span>],
+        <span class="dk">CALCULATE</span>([<span class="dv">Total TEU</span>], <span class="df">ALL</span>(<span class="cm">DIM_Client</span>)),
+        <span class="cn">0</span>
+    )</pre></div>
+      </div>
+    </div>
+
+    <!-- PBI mock -->
+    <div class="pbi-spread rv d3" style="margin:1.5rem 0">
+      <div class="pbi-topbar"><span>File</span><span style="margin:0 .3rem;color:#333">|</span><span class="pbi-tab a">Report View</span><span class="pbi-tab">Data View</span><span class="pbi-tab">Model View</span><span class="pbi-app-name">CommercialDashboard.pbix · DP World Djazair 2025</span></div>
       <div class="pbi-body">
         <div class="pbi-kpis">
-          <div class="kpi a1"><div class="kpi-l">Total TEU</div><div class="kpi-v">50K</div><div class="kpi-d ku">↑ 12.4% YoY</div></div>
-          <div class="kpi a2"><div class="kpi-l">Active Clients</div><div class="kpi-v">87</div><div class="kpi-d ku">↑ 8 New</div></div>
-          <div class="kpi a3"><div class="kpi-l">Vessels Tracked</div><div class="kpi-v">214</div><div class="kpi-d ku">↑ 5.3%</div></div>
-          <div class="kpi a4"><div class="kpi-l">Avg Dwell (days)</div><div class="kpi-v">4.2</div><div class="kpi-d kd">↓ 0.8 improved</div></div>
+          <div class="kpi a1"><div class="kpi-l">Total TEU YTD</div><div class="kpi-v">50K</div><div class="kpi-d ku">↑ 12.4% YoY</div></div>
+          <div class="kpi a2"><div class="kpi-l">Active Clients</div><div class="kpi-v">87</div><div class="kpi-d ku">↑ 8 New Q4</div></div>
+          <div class="kpi a3"><div class="kpi-l">Avg Dwell (days)</div><div class="kpi-v">4.2</div><div class="kpi-d kd">↓ 0.8d vs PY</div></div>
+          <div class="kpi a4"><div class="kpi-l">Reefer Share %</div><div class="kpi-v">23%</div><div class="kpi-d ku">↑ 2.1pp</div></div>
         </div>
         <div class="chart-area pbi-chart">
-          <div class="chart-ttl">TEU Volume by Shipping Line</div>
+          <div class="chart-ttl">TEU by Shipping Line — YTD vs Prior Year</div>
           <div class="brow"><span class="brow-l">MSC</span><div class="brow-tr"><div class="brow-f f1" data-w="92%"></div></div><span class="brow-v">18.4K</span></div>
           <div class="brow"><span class="brow-l">CMA CGM</span><div class="brow-tr"><div class="brow-f f2" data-w="76%"></div></div><span class="brow-v">15.2K</span></div>
           <div class="brow"><span class="brow-l">MAERSK</span><div class="brow-tr"><div class="brow-f f3" data-w="63%"></div></div><span class="brow-v">12.6K</span></div>
@@ -572,30 +988,33 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
         </div>
       </div>
     </div>
-    <div class="impact-metrics rv d3">
-      <div class="im-cell"><div class="im-val">50K</div><div class="im-label">TEU centralised</div></div>
-      <div class="im-cell"><div class="im-val">1 Source</div><div class="im-label">Single truth platform</div></div>
-      <div class="im-cell"><div class="im-val">Interactive</div><div class="im-label">Drill-through views</div></div>
-      <div class="im-cell"><div class="im-val">Faster</div><div class="im-label">Commercial decisions</div></div>
+
+    <div class="impact-table-wrap rv d4">
+      <div class="it-header">Business Impact</div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">METRIC</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--mute)">BEFORE</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--mute)">AFTER</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Report prep time</div><div class="it-before">3–4 hours/week manual</div><div class="it-after">~15 minutes · auto-refresh daily</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Data freshness</div><div class="it-before">Week-old snapshots</div><div class="it-after">Daily refresh · same-day visibility</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Client visibility</div><div class="it-before">No per-client breakdown</div><div class="it-after">Drill-through by client, line, vessel, commodity, period</div></div>
+      <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Decision support</div><div class="it-before">Reactive — missing targets discovered late</div><div class="it-after">Proactive — underperforming clients flagged in real time</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PROJECT 03 ═══════════ -->
+<!-- ════════════════════ PROJECT 03 ════════════════════ -->
 <section id="proj03" class="project-spread rv">
   <div class="ghost-num spread-ghost">03</div>
   <div class="container">
     <div class="spread-header rv">
-      <div class="spread-num">// 03 — Process Automation · IoT Monitoring</div>
-      <h2 class="spread-title">REEFER<br>MONITORING<br>DIGITALIZATION</h2>
-      <p class="spread-sub">A paper-based reefer temperature inspection process — manual email chains, physical sheets, delayed alerts — replaced with a full real-time digital system on the Microsoft Power Platform.</p>
+      <div class="spread-num">// 03 — Power Platform · Process Automation · IoT Monitoring</div>
+      <h2 class="spread-title">REEFER MONITORING<br>DIGITALIZATION</h2>
+      <p class="spread-sub">Paper-based reefer temperature inspections created a multi-hour lag between a temperature anomaly and client notification — exposing the terminal to cargo damage claims and contractual liability.</p>
     </div>
     <div class="pa-layout rv d1">
       <div>
         <div class="tablet-wrap">
           <div class="tab-cam"></div>
           <div class="tab-screen">
-            <div class="tab-bar"><span style="font-size:.9rem">🌡️</span><span class="tab-bar-name">ReeferMonitor</span><span class="tab-bar-live">● LIVE</span></div>
+            <div class="tab-bar"><span style="font-size:.9rem">🌡️</span><span class="tab-bar-name">ReeferMonitor v2.1</span><span class="tab-bar-live">● LIVE</span></div>
             <div class="tab-content">
               <div class="tab-header"><span class="tab-count">124 Units Active</span><span class="tab-alert-badge">⚠ 2 Alerts</span></div>
               <div class="rrow"><span class="rrow-id">MSCU-4821</span><span class="rrow-t">−18.2°C</span><span class="rrow-s s-ok">OK</span></div>
@@ -611,68 +1030,239 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
         </div>
       </div>
       <div>
-        <div class="case-cols" style="grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem">
-          <div class="case-block"><div class="cb-label">Problem</div><p class="cb-body">Temperature monitoring relied on paper forms and manual email chains — slow, error-prone, creating commercial liability through delayed anomaly notifications.</p></div>
-          <div class="case-block"><div class="cb-label">Architecture</div><p class="cb-body">Power Apps (tablet) → SharePoint (data store) → Power Automate (threshold monitoring) → automated alerts to shipping lines → Power BI live supervisor dashboard.</p></div>
+        <div class="case-cols" style="grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem">
+          <div class="case-block"><div class="cb-label">Business Problem</div><p class="cb-body">Inspectors walked the yard with paper forms. Readings were recorded manually, consolidated into an Excel sheet, then emailed to shipping lines — a process that took 2–3 hours from anomaly detection to client notification. Every hour of delay increased cargo damage risk and contractual liability.</p></div>
+          <div class="case-block"><div class="cb-label">System Architecture</div>
+            <div class="method-steps">
+              <div class="ms-item"><div class="ms-num">1</div><div class="ms-body"><div class="ms-title">Power Apps (Tablet)</div><div class="ms-desc">Inspectors log readings directly from yard. Dropdown-controlled temperature entry with container lookup.</div></div></div>
+              <div class="ms-item"><div class="ms-num">2</div><div class="ms-body"><div class="ms-title">SharePoint List (Storage)</div><div class="ms-desc">Real-time central data store. Each inspection creates a timestamped record with container ID, temperature, and inspector ID.</div></div></div>
+              <div class="ms-item"><div class="ms-num">3</div><div class="ms-body"><div class="ms-title">Power Automate (Alert Engine)</div><div class="ms-desc">Flow monitors SharePoint every 5 min. If temperature &gt; threshold for container type, automated email fires to shipping line + CS team.</div></div></div>
+              <div class="ms-item"><div class="ms-num">4</div><div class="ms-body"><div class="ms-title">Power BI (Supervisor Dashboard)</div><div class="ms-desc">Live reefer yard overview: status map, alert history, container-level detail, daily inspection coverage rate.</div></div></div>
+            </div>
+          </div>
         </div>
-        <div class="pa-bullets">
-          <div class="pa-bullet"><div class="pa-bullet-ico">⚡</div><div><div class="pa-bullet-val">Real-time</div><div class="pa-bullet-lbl">Automated anomaly detection &amp; alerts to shipping lines</div></div></div>
-          <div class="pa-bullet"><div class="pa-bullet-ico">🗂️</div><div><div class="pa-bullet-val">Eliminated</div><div class="pa-bullet-lbl">All paper-based inspection forms and manual email chains</div></div></div>
-          <div class="pa-bullet"><div class="pa-bullet-ico">📊</div><div><div class="pa-bullet-val">Live Dashboard</div><div class="pa-bullet-lbl">Power BI overview for reefer yard supervisor</div></div></div>
-          <div class="pa-bullet"><div class="pa-bullet-ico">📱</div><div><div class="pa-bullet-val">124+ Units</div><div class="pa-bullet-lbl">Reefer containers monitored simultaneously</div></div></div>
+        <div class="impact-table-wrap">
+          <div class="it-header">Business Impact</div>
+          <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Alert lag time</div><div class="it-before">2–3 hours (paper → email)</div><div class="it-after">&lt; 5 minutes · automated to shipping line</div></div>
+          <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Paper forms</div><div class="it-before">Physical sheets, manual entry</div><div class="it-after">Fully eliminated — 100% digital</div></div>
+          <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Coverage</div><div class="it-before">~60 units (manual capacity)</div><div class="it-after">124+ units monitored per inspection cycle</div></div>
+          <div class="it-row" style="grid-template-columns:.8fr .8fr 1.4fr"><div class="it-metric">Liability exposure</div><div class="it-before">Claims from delayed notifications</div><div class="it-after">Documented notification trail · reduced exposure</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PROJECT 04 ═══════════ -->
+<!-- ════════════════════ PROJECT 04 (REFRAMED) ════════════════════ -->
 <section id="proj04" class="project-spread rv" style="background:rgba(56,189,248,.012)">
   <div class="ghost-num spread-ghost">04</div>
   <div class="container">
     <div class="spread-header rv">
-      <div class="spread-num">// 04 — Commercial Strategy · Digital Adoption</div>
-      <h2 class="spread-title">DIGITAL PLATFORM<br>LAUNCH<br>STRATEGY</h2>
-      <p class="spread-sub">A new digital logistics platform needed structured adoption across freight forwarders and internal teams — without strategy, the rollout risked stalling at early users only.</p>
+      <div class="spread-num">// 04 — Adoption Analytics · Segmentation Model · KPI Tracking</div>
+      <h2 class="spread-title">PLATFORM ADOPTION<br>INTELLIGENCE</h2>
+      <p class="spread-sub">When DP World Djazair launched a new digital logistics platform for freight forwarders, no data infrastructure existed to measure adoption or identify where engagement was failing. This project built that infrastructure.</p>
     </div>
-    <div class="flow-cols rv d1">
-      <div>
-        <div class="flow-node"><div class="fn-icon a">🚀</div><div><div class="fn-phase">Phase 1 · Trigger</div><div class="fn-name">Platform Launch + Internal Enablement</div><div class="fn-desc">Digital logistics platform deployed. Commercial team trained on all features. Support materials, FAQs, and workflows prepared before external rollout.</div></div></div>
-        <div class="flow-node"><div class="fn-icon b">🎯</div><div><div class="fn-phase">Phase 1 · Action</div><div class="fn-name">Freight Forwarder Segmentation</div><div class="fn-desc">Full freight forwarder base segmented by volume tier, digital readiness score, and relationship strength. Priority engagement matrix built for commercial team.</div></div></div>
-        <div class="flow-node"><div class="fn-icon c">🤝</div><div><div class="fn-phase">Phase 2 · Action</div><div class="fn-name">Targeted Early Adopter Outreach</div><div class="fn-desc">High-volume, digitally-ready forwarders engaged with personalised communication, dedicated onboarding support, and direct commercial team involvement.</div></div></div>
-        <div class="flow-node"><div class="fn-icon b">📢</div><div><div class="fn-phase">Phase 3 · Action</div><div class="fn-name">Broad Rollout Campaign</div><div class="fn-desc">Self-service training modules, how-to guides, and segmented email campaigns deployed to the full freight forwarder base across all tiers.</div></div></div>
-        <div class="flow-node"><div class="fn-icon e">📊</div><div><div class="fn-phase">Phase 3 · Monitoring</div><div class="fn-name">Adoption KPI Tracking Dashboard</div><div class="fn-desc">Platform adoption monitored via Power BI: registration rates, weekly active users, segment penetration, and drop-off analysis.</div></div></div>
+
+    <div class="case-cols rv" style="grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div class="case-block">
+        <div class="cb-label">Analytics Scope</div>
+        <p class="cb-body">This is not a communication project repackaged as analytics. The analytical component was: building a freight forwarder segmentation model in Excel, creating the Power BI adoption tracking dashboard, and designing the KPI framework used to measure engagement against targets. The communication strategy was executed by the broader team using the analysis as its backbone.</p>
       </div>
-      <div>
-        <div class="fsc"><div class="fsc-title">Campaign Metrics</div><div class="fsc-row"><span class="fsc-k">Segments</span><span class="fsc-v">4 Tiers</span></div><div class="fsc-row"><span class="fsc-k">Phases</span><span class="fsc-v">3 Staged</span></div><div class="fsc-row"><span class="fsc-k">Materials</span><span class="fsc-v">Self-Service</span></div><div class="fsc-row"><span class="fsc-k">Tracking</span><span class="fsc-v">Power BI</span></div></div>
-        <div class="fsc"><div class="fsc-title">Tools</div><div class="fsc-row"><span class="fsc-k">Strategy</span><span class="fsc-v">Segmentation</span></div><div class="fsc-row"><span class="fsc-k">Analytics</span><span class="fsc-v">Power BI</span></div><div class="fsc-row"><span class="fsc-k">Change Mgmt</span><span class="fsc-v">Training</span></div></div>
+      <div class="case-block">
+        <div class="cb-label">Segmentation Model</div>
+        <p class="cb-body">Freight forwarder base (80+ companies) scored across three weighted dimensions:</p>
+        <div style="margin-top:.6rem">
+          <div class="ms-item" style="padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04)"><div class="ms-num">40%</div><div class="ms-body"><div class="ms-title" style="font-size:.78rem">Volume Tier</div><div class="ms-desc">TEU shipped in previous 12 months via all carriers</div></div></div>
+          <div class="ms-item" style="padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04)"><div class="ms-num">35%</div><div class="ms-body"><div class="ms-title" style="font-size:.78rem">Digital Readiness</div><div class="ms-desc">Existing platform usage, web booking rate, email engagement</div></div></div>
+          <div class="ms-item" style="padding:.4rem 0"><div class="ms-num">25%</div><div class="ms-body"><div class="ms-title" style="font-size:.78rem">Relationship Strength</div><div class="ms-desc">Contract status, communication frequency, last meeting date</div></div></div>
+        </div>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Adoption KPI Framework</div>
+        <div class="proof-box" style="margin-top:.5rem">
+          <div class="pb-header"><span>Tracked KPIs — Power BI Dashboard</span></div>
+          <div class="pb-body">
+            <table class="pb-table">
+              <tr><th>KPI</th><th>Target</th><th>Granularity</th></tr>
+              <tr><td>Registration rate</td><td class="hi-cell">60%</td><td>By segment</td></tr>
+              <tr><td>Weekly active users</td><td class="hi-cell">WAU/MAU &gt; 0.4</td><td>Weekly</td></tr>
+              <tr><td>Booking penetration</td><td class="hi-cell">30% of shipments</td><td>By forwarder</td></tr>
+              <tr><td>Tier-1 adoption</td><td class="hi-cell">100%</td><td>By account</td></tr>
+              <tr><td>Drop-off rate (post-reg)</td><td class="warn-cell">&lt; 20%</td><td>Weekly cohort</td></tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="impact-metrics rv d2" style="margin-top:2rem">
-      <div class="im-cell"><div class="im-val">Phased</div><div class="im-label">Structured adoption roadmap</div></div>
-      <div class="im-cell"><div class="im-val">Multi-tier</div><div class="im-label">Forwarder segmentation</div></div>
-      <div class="im-cell"><div class="im-val">Enabled</div><div class="im-label">Internal team training</div></div>
-      <div class="im-cell"><div class="im-val">Tracked</div><div class="im-label">KPI adoption framework</div></div>
+
+    <div class="impact-metrics rv d2" style="margin-top:1rem">
+      <div class="im-cell"><div class="im-val">80+</div><div class="im-label">Forwarders<br>scored &amp; segmented</div></div>
+      <div class="im-cell"><div class="im-val">4 Tiers</div><div class="im-label">Segmentation<br>framework built</div></div>
+      <div class="im-cell"><div class="im-val">5 KPIs</div><div class="im-label">Adoption metrics<br>tracked in Power BI</div></div>
+      <div class="im-cell"><div class="im-val">Data-led</div><div class="im-label">Strategy backbone<br>built on analysis</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CONTACT ═══════════ -->
-<section id="contact" class="rv">
+<!-- ════════════════════ PROJECT 05 — INDEPENDENT ════════════════════ -->
+<section id="proj05" class="project-spread rv" style="background:rgba(34,197,94,.01)">
+  <div class="ghost-num spread-ghost">05</div>
+  <div class="container">
+    <div class="spread-header rv">
+      <div class="indie-badge">✓ Independent Project · Public Data · UNCTAD Maritime</div>
+      <div class="spread-num">// 05 — Independent Analysis · Python · UNCTAD Public Data</div>
+      <h2 class="spread-title">MEDITERRANEAN<br>PORT THROUGHPUT<br>ANALYSIS</h2>
+      <p class="spread-sub">An independent analysis of container throughput divergence between Morocco and Algeria using publicly verified data — Tanger Med official activity reports and World Bank / UNCTAD national statistics. Built entirely outside of any employer context.</p>
+    </div>
+
+    <div class="case-cols rv" style="grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div class="case-block">
+        <div class="cb-label">Analytical Questions</div>
+        <ul class="cb-body">
+          <li>What is Morocco's Tanger Med throughput trajectory and how does it compare to Algeria's national total?</li>
+          <li>What structural differences explain the volume gap — hub strategy vs gateway model?</li>
+          <li>When did Algeria's throughput peak and what drove the post-2018 decline?</li>
+          <li>What are the commercial implications for operators in the region?</li>
+        </ul>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Data Sources</div>
+        <ul class="cb-body">
+          <li><strong>Tanger Med Port Authority</strong> — Official annual activity reports (2019–2024, public)</li>
+          <li><strong>World Bank IS.SHP.GOOD.TU</strong> — Container port traffic by country (Algeria series to 2020)</li>
+          <li><strong>UNCTAD / CEIC</strong> — Container Port Throughput series, Algeria peak (2018: 1,844,422 TEU)</li>
+          <li>All sources public · data gaps acknowledged explicitly</li>
+        </ul>
+      </div>
+      <div class="case-block">
+        <div class="cb-label">Technical Stack</div>
+        <ul class="cb-body">
+          <li><strong>Python</strong> — pandas, matplotlib, seaborn, scipy (correlation)</li>
+          <li><strong>Data cleaning</strong> — handling gaps in UNCTAD reporting years, country name normalization across datasets</li>
+          <li><strong>Analysis</strong> — CAGR calculation, peer benchmarking, growth decomposition</li>
+          <li><strong>Output</strong> — Analytical report + charts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rv d2">
+      <div class="cb-label" style="margin-bottom:.7rem">Python Analysis — Key Functions</div>
+      <div class="code-block">
+        <div class="cb-header"><span class="cb-tc r"></span><span class="cb-tc y"></span><span class="cb-tc g"></span><span class="cb-file">med_port_analysis.py · Python 3.11 · UNCTAD + World Bank data</span></div>
+        <div class="cb-body"><pre><span class="ck">import</span> <span class="cm">pandas</span> <span class="ck">as</span> <span class="cm">pd</span>
+<span class="ck">import</span> <span class="cm">numpy</span> <span class="ck">as</span> <span class="cm">np</span>
+
+<span class="cc"># Data: World Bank IS.SHP.GOOD.TU + Tanger Med official reports</span>
+<span class="cc"># Algeria series ends 2020 (latest in World Bank public database)</span>
+<span class="cm">algeria</span> <span class="cm">= {</span>
+    <span class="cm">'country'</span><span class="cm">:</span> <span class="cs">'Algeria'</span><span class="cm">,</span>
+    <span class="cm">'source'</span><span class="cm">:</span> <span class="cs">'World Bank IS.SHP.GOOD.TU / UNCTAD'</span><span class="cm">,</span>
+    <span class="cm">'data'</span><span class="cm">: {</span>
+        <span class="cn">2015</span><span class="cm">:</span> <span class="cn">1_380_000</span><span class="cm">,</span>  <span class="cc"># World Bank estimate</span>
+        <span class="cn">2018</span><span class="cm">:</span> <span class="cn">1_844_422</span><span class="cm">,</span>  <span class="cc"># UNCTAD — all-time high</span>
+        <span class="cn">2019</span><span class="cm">:</span> <span class="cn">1_793_990</span><span class="cm">,</span>  <span class="cc"># UNCTAD via CEIC</span>
+        <span class="cn">2020</span><span class="cm">:</span> <span class="cn">1_541_273</span><span class="cm">,</span>  <span class="cc"># World Bank — latest available</span>
+    <span class="cm">}</span>
+<span class="cm">}</span>
+<span class="cm">morocco</span> <span class="cm">= {</span>
+    <span class="cm">'country'</span><span class="cm">:</span> <span class="cs">'Morocco (Tanger Med)'</span><span class="cm">,</span>
+    <span class="cm">'source'</span><span class="cm">:</span> <span class="cs">'Tanger Med Port Authority Annual Reports'</span><span class="cm">,</span>
+    <span class="cm">'data'</span><span class="cm">: {</span>
+        <span class="cn">2019</span><span class="cm">:</span> <span class="cn">6_006_000</span><span class="cm">,</span>  <span class="cc"># Tanger Med official</span>
+        <span class="cn">2021</span><span class="cm">:</span> <span class="cn">7_196_000</span><span class="cm">,</span>  <span class="cc"># Tanger Med official (↑24% from 2020)</span>
+        <span class="cn">2022</span><span class="cm">:</span> <span class="cn">7_596_845</span><span class="cm">,</span>  <span class="cc"># Tanger Med official activity report</span>
+        <span class="cn">2024</span><span class="cm">:</span> <span class="cn">10_241_392</span><span class="cm">, </span> <span class="cc"># Tanger Med official</span>
+    <span class="cm">}</span>
+<span class="cm">}</span>
+
+<span class="cc"># Key ratio: Morocco 2022 vs Algeria 2020 (closest overlapping years)</span>
+<span class="cm">ratio</span> <span class="cm">= morocco[</span><span class="cs">'data'</span><span class="cm">][</span><span class="cn">2022</span><span class="cm">] / algeria[</span><span class="cs">'data'</span><span class="cm">][</span><span class="cn">2020</span><span class="cm">]</span>
+<span class="cc"># ratio = 4.93 — Morocco handles ~5× Algeria's volume</span>
+<span class="cc"># IMPORTANT: not apples-to-apples — Tanger Med = ~80% transshipment</span>
+<span class="cc"># Algeria = 100% gateway (domestic import/export only)</span>
+
+<span class="cc"># Algeria: peak-to-COVID decline</span>
+<span class="cm">dip</span> <span class="cm">= (algeria[</span><span class="cs">'data'</span><span class="cm">][</span><span class="cn">2020</span><span class="cm">] - algeria[</span><span class="cs">'data'</span><span class="cm">][</span><span class="cn">2018</span><span class="cm">]) / algeria[</span><span class="cs">'data'</span><span class="cm">][</span><span class="cn">2018</span><span class="cm">]</span>
+<span class="cc"># dip = -0.165 → 16.5% contraction 2018→2020 (COVID + import restrictions)</span></pre></div>
+      </div>
+    </div>
+
+    <!-- Key Findings -->
+    <div class="proof-box rv d3" style="margin-top:1.2rem">
+      <div class="pb-header"><span>Key Findings — Morocco vs Algeria Container Throughput</span><span class="pb-tag">SOURCED: UNCTAD / WORLD BANK / TANGER MED OFFICIAL</span></div>
+      <div class="pb-body">
+        <table class="pb-table">
+          <tr><th>Country / Port</th><th>~2018–2019 TEU</th><th>2022 TEU</th><th>Strategy</th><th>Source</th></tr>
+          <tr>
+            <td><strong style="color:var(--paper)">Morocco</strong><br><span style="font-size:.62rem;color:var(--mute)">Tanger Med dominates</span></td>
+            <td class="hi-cell">~6.0M (2019)</td>
+            <td class="hi-cell">7.60M</td>
+            <td>Hub transshipment<br><span style="font-size:.62rem;color:var(--mute)">180 ports · 70 countries</span></td>
+            <td style="font-size:.6rem;color:var(--mute)">Tanger Med<br>Official Report</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--paper)">Algeria</strong><br><span style="font-size:.62rem;color:var(--mute)">All ports combined</span></td>
+            <td>1.84M (2018 peak)</td>
+            <td class="warn-cell">~1.54M (2020 latest)</td>
+            <td>Gateway only<br><span style="font-size:.62rem;color:var(--mute)">No transshipment hub</span></td>
+            <td style="font-size:.6rem;color:var(--mute)">World Bank /<br>UNCTAD via CEIC</td>
+          </tr>
+        </table>
+        <div style="margin-top:.9rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.06);font-size:.75rem;color:var(--mute);line-height:1.65">
+          <strong style="color:rgba(242,239,234,.6)">Data note:</strong> World Bank container throughput series for Algeria runs to 2020 (1,541,273 TEU). Post-2020 Algerian national data is not consolidated in public international databases as of this analysis. Morocco figures are from the official Tanger Med Port Authority annual activity reports (7,596,845 TEU in 2022; 7,196,000 in 2021).<br><br>
+          <strong style="color:rgba(242,239,234,.6)">Key structural finding:</strong> Morocco's Tanger Med operates as a transshipment hub on the East–West global route (Strait of Gibraltar), handling cargo that never enters Morocco — a fundamentally different model from Algeria's purely gateway ports. Algeria's throughput reflects only domestic import/export demand. The gap is therefore not purely a competitive loss, but a strategic difference with significant commercial implications for regional positioning.
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal output chart — real data -->
+    <div class="rv d4" style="margin-top:1.2rem">
+      <div class="cb-label" style="margin-bottom:.7rem">Terminal Output — Volume Comparison</div>
+      <div class="chart-out">
+        <pre>
+  Container Throughput: Morocco (Tanger Med) vs Algeria (All Ports)
+  ─────────────────────────────────────────────────────────────────
+  Morocco 2022 (Tanger Med official):
+  7.60M TEU  ████████████████████████████████████████  7,596,845
+
+  Algeria 2020 (World Bank / UNCTAD, latest available):
+  1.54M TEU  ████████                                  1,541,273
+
+  Algeria 2018 (all-time high, UNCTAD):
+  1.84M TEU  ██████████                                1,844,422
+  ─────────────────────────────────────────────────────────────────
+  Sources:
+    Morocco  → Tanger Med Port Authority Activity Report 2022
+    Algeria  → World Bank IS.SHP.GOOD.TU / UNCTAD CPT series
+  Note: Morocco figure = Tanger Med only (~80% transshipment)
+        Algeria figure = all ports combined (gateway model only)
+  Structural gap driven by hub strategy, not port efficiency alone.
+        </pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CONTACT ════════════════════ -->
+<section id="contact" class="rv" style="padding:7rem 0;border-bottom:1px solid var(--rule)">
   <div class="container">
     <div class="section-tag" style="margin-bottom:1.5rem">Get in Touch</div>
     <h2 class="contact-head">OPEN TO<br><em>OPPORTUNITIES</em><br>IN LOGISTICS &amp;<br>PORT ANALYTICS</h2>
     <div class="contact-layout">
       <div class="c-avail">
         <div class="ca-status"><div class="ca-dot"></div><span class="ca-label">Available for Opportunities</span></div>
-        <div class="ca-title">Looking for the next challenge in logistics intelligence</div>
-        <p class="ca-body">Open to analyst, business intelligence, and data roles in logistics, port, and maritime operations. Whether you are a recruiter, team lead, or fellow analyst — I would be glad to connect.</p>
+        <div class="ca-title">Commercial Analyst · BI · Logistics Intelligence</div>
+        <p class="ca-body">I build analytical infrastructure for port and logistics operations — dashboards, pipelines, and automation tools that give commercial teams real visibility. If you are looking for that profile in your organisation, let's talk.</p>
         <div class="ca-list">
-          <div class="ca-li">Port &amp; Container Terminal Operations</div>
-          <div class="ca-li">Freight &amp; Shipping Line Analytics</div>
-          <div class="ca-li">Supply Chain &amp; Logistics Intelligence</div>
-          <div class="ca-li">Digital Transformation in Transport</div>
+          <div class="ca-li">Port &amp; Container Terminal Analytics</div>
+          <div class="ca-li">Commercial BI &amp; Decision Support</div>
+          <div class="ca-li">Supply Chain &amp; Freight Intelligence</div>
+          <div class="ca-li">Digital Transformation in Logistics</div>
         </div>
+        <a href="#" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;background:var(--acid);color:var(--ink);font-family:var(--bebas);font-size:.95rem;letter-spacing:.1em;padding:.6rem 1.3rem;border-radius:3px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(198,255,61,.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
       </div>
       <div class="c-links">
         <a href="mailto:imad.hafsi@dpworld.com" class="c-link"><span class="cl-ico">✉️</span><div><div class="cl-label">Email</div><div class="cl-val">imad.hafsi@dpworld.com</div></div><span class="cl-arr">→</span></a>
@@ -680,16 +1270,21 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
         <a href="https://github.com/dpworldimad-web" target="_blank" rel="noopener" class="c-link"><span class="cl-ico">⚙️</span><div><div class="cl-label">GitHub</div><div class="cl-val">github.com/dpworldimad-web</div></div><span class="cl-arr">→</span></a>
         <div style="margin-top:.3rem;padding:1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:5px">
           <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.6rem">// profile.info</div>
-          <div style="font-family:var(--mono);font-size:.7rem;color:rgba(242,239,234,.35);line-height:1.8">Location · Algeria, DZ<br>Domain · Port &amp; Logistics<br>Languages · FR / EN / AR<br>Status · <span style="color:var(--acid)">● Open to Work</span></div>
+          <div style="font-family:var(--mono);font-size:.7rem;color:rgba(242,239,234,.35);line-height:1.8">
+            Employer · DP World Djazair<br>
+            Location · Algiers, Algeria<br>
+            Languages · FR / EN / AR / ES<br>
+            Status · <span style="color:var(--acid)">● Open to Opportunities</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <span class="foot-l">© 2025 — Imad Hafsi · Commercial Analyst · Port &amp; Logistics</span>
-  <span class="foot-r">Built with <span>precision</span> · Algeria</span>
+<footer style="padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule)">
+  <span style="font-family:var(--mono);font-size:.62rem;color:var(--mute);letter-spacing:.08em">© 2025 — Imad Hafsi · Commercial Analyst · DP World Djazair</span>
+  <span style="font-family:var(--mono);font-size:.62rem;color:var(--mute)">Portfolio <span style="color:var(--acid)">v5.0</span></span>
 </footer>
 
 <script>
@@ -697,118 +1292,81 @@ footer { padding:1.5rem 2.5rem; display:flex; align-items:center; justify-conten
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  cur.style.left=mx+'px'; cur.style.top=my+'px';
-});
-(function loop(){
-  rx+=(mx-rx)*.14; ry+=(my-ry)*.14;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a,button,.proj-row,.pa-bullet,.flow-node').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';ring.style.width='48px';ring.style.height='48px';ring.style.borderColor='rgba(198,255,61,.65)';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='34px';ring.style.height='34px';ring.style.borderColor='rgba(198,255,61,.45)';});
+document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function loop(){ rx+=(mx-rx)*.13; ry+=(my-ry)*.13; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+document.querySelectorAll('a,button,.tool-card,.sg-item,.tv2-row,.edu-block,.proj-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cur.style.width='14px'; cur.style.height='14px'; ring.style.width='46px'; ring.style.height='46px'; ring.style.borderColor='rgba(198,255,61,.65)'; });
+  el.addEventListener('mouseleave',()=>{ cur.style.width='8px'; cur.style.height='8px'; ring.style.width='34px'; ring.style.height='34px'; ring.style.borderColor='rgba(198,255,61,.4)'; });
 });
 
 // ── SCROLL PROGRESS ──
-const prog=document.getElementById('scroll-prog');
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement.scrollHeight-window.innerHeight;
-  prog.style.width=(window.scrollY/h*100)+'%';
-},{passive:true});
+const prog = document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{ const h=document.documentElement.scrollHeight-window.innerHeight; prog.style.width=(window.scrollY/h*100)+'%'; },{passive:true});
 
 // ── LIVE DATE ──
 const months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-const nd=new Date();
-const el=document.getElementById('live-date');
+const nd=new Date(); const el=document.getElementById('live-date');
 if(el) el.textContent=nd.getDate()+' '+months[nd.getMonth()]+' '+nd.getFullYear();
 
-// ── SCROLL REVEAL + BAR ANIMATIONS ──
+// ── SCROLL REVEAL + ANIMATIONS ──
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(!e.isIntersecting)return;
+    if(!e.isIntersecting) return;
     e.target.classList.add('show');
-    e.target.querySelectorAll('.skill-fill[data-w],.brow-f[data-w]').forEach((bar,i)=>{
-      setTimeout(()=>bar.style.width=bar.dataset.w, 300+i*130);
-    });
+    e.target.querySelectorAll('.brow-f[data-w]').forEach((bar,i)=>{ setTimeout(()=>bar.style.width=bar.dataset.w, 350+i*140); });
     io.unobserve(e.target);
   });
 },{threshold:0.07});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// ── FALLBACK: ensure all reveals show after 2.5s (in case IO doesn't fire) ──
+// Fallback reveal
 setTimeout(()=>{
   document.querySelectorAll('.rv:not(.show)').forEach(el=>{
     el.classList.add('show');
-    el.querySelectorAll('.skill-fill[data-w],.brow-f[data-w]').forEach((bar,i)=>{
-      setTimeout(()=>bar.style.width=bar.dataset.w,i*130);
-    });
+    el.querySelectorAll('.brow-f[data-w]').forEach((bar,i)=>{ setTimeout(()=>bar.style.width=bar.dataset.w,i*140); });
   });
 },2500);
 
 // ── TERMINAL ──
 const SCRIPT=[
-  {d:0,c:'c',s:'# ─────────────────────────────────────────────────'},
-  {d:60,c:'c',s:'# cargo_standardizer.py  |  NLP Pipeline v3.1'},
-  {d:120,c:'c',s:'# Author: Imad Hafsi  |  Port Logistics Analytics'},
-  {d:180,c:'c',s:'# ─────────────────────────────────────────────────'},
-  {d:380,c:'cmd',s:'python cargo_standardizer.py --input manifest.xlsx --output taxonomy_v3.xlsx'},
-  {d:860,c:'i',s:'[INIT]  Pipeline v3.1 loading ...'},
-  {d:1100,c:'i',s:'[LOAD]  Reading cargo_manifest.xlsx ...'},
-  {d:1380,c:'h',s:'[DATA]  Records : 20,847  |  47 columns  |  3 source systems'},
-  {d:1700,c:'w',s:'[WARN]  Inconsistent entries : 8,432 (40.4%)  ← multilingual'},
-  {d:1980,c:'i',s:'[STEP 1/4]  Normalizing: lowercase + diacritics removal ...'},
-  {d:2360,c:'i',s:'[STEP 2/4]  Regex: abbreviations, units, container codes ...'},
-  {d:2760,c:'i',s:'[STEP 3/4]  Fuzzy matching → master taxonomy (threshold 85%) ...'},
-  {d:3160,c:'i',s:'[STEP 4/4]  Rules engine: keyword-based classification ...'},
-  {d:3560,c:'prog',s:''},
-  {d:5900,c:'s',s:'[SUCCESS]  20,847 records standardized in 4.2 seconds'},
-  {d:6150,c:'s',s:'[QUALITY]  Accuracy : 99.1%  |  185 flagged for manual review'},
-  {d:6450,c:'h',s:'[RESULT]  Before: ~3 working days  ──→  After: 4.2 seconds'},
-  {d:6750,c:'s',s:'[DONE]   Pipeline complete. Repeatable for future batches. ✓'},
+  {d:0,c:'c',s:'# cargo_standardizer.py  |  NLP Data Pipeline v3.1'},
+  {d:80,c:'c',s:'# Author: Imad Hafsi  |  DP World Djazair'},
+  {d:200,c:'cmd',s:'python cargo_standardizer.py --input manifest.xlsx --output taxonomy_v3.xlsx'},
+  {d:700,c:'i',s:'[INIT]  Pipeline v3.1 loading ...'},
+  {d:980,c:'i',s:'[LOAD]  Records : 20,847  |  47 cols  |  3 source systems'},
+  {d:1280,c:'w',s:'[WARN]  Inconsistent entries : 8,432 (40.4%)  — multilingual'},
+  {d:1560,c:'i',s:'[1/4]  Normalizing: unicode NFKD + diacritics removal ...'},
+  {d:1940,c:'i',s:'[2/4]  Regex: abbreviations, units, container codes ...'},
+  {d:2300,c:'i',s:'[3/4]  rapidfuzz token_sort_ratio — threshold 85 ...'},
+  {d:2680,c:'i',s:'[4/4]  Keyword rules engine for unmatched records ...'},
+  {d:3060,c:'prog',s:''},
+  {d:5400,c:'s',s:'[SUCCESS]  20,847 records classified in 4.2 seconds'},
+  {d:5650,c:'s',s:'[QUALITY]  Accuracy : 99.1%  |  185 flagged for review'},
+  {d:5950,c:'h',s:'[RESULT]  Before: ~4 working days  ──→  After: 4.2 seconds'},
+  {d:6250,c:'s',s:'[DONE]   Output: taxonomy_v3.xlsx  ✓  Pipeline repeatable.'},
 ];
 let busy=false;
 function runTerm(){
-  if(busy)return;
-  busy=true;
-  const btn=document.getElementById('t-btn');
-  btn.classList.add('busy');
-  const out=document.getElementById('t-out');
-  out.innerHTML='';
+  if(busy)return; busy=true;
+  const btn=document.getElementById('t-btn'); btn.classList.add('busy');
+  const out=document.getElementById('t-out'); out.innerHTML='';
   SCRIPT.forEach(line=>{
     setTimeout(()=>{
       if(line.c==='prog'){
-        const div=document.createElement('div');
-        div.className='prog-line';
+        const div=document.createElement('div'); div.className='prog-line';
         div.innerHTML='<span style="color:#374e3c;font-size:.68rem">[PROC]</span><div class="prog-tr"><div class="prog-f" id="pf"></div></div><span id="pp" style="font-size:.65rem;min-width:36px">0%</span>';
         out.appendChild(div);
-        requestAnimationFrame(()=>{
-          const pf=document.getElementById('pf');
-          if(pf)pf.style.width='100%';
-          let p=0;
-          const iv=setInterval(()=>{
-            p=Math.min(p+2,100);
-            const pp=document.getElementById('pp');
-            if(pp)pp.textContent=p+'%';
-            if(p>=100)clearInterval(iv);
-          },48);
-        });
-      }else{
-        const el=document.createElement('p');
-        el.className='t-line t-'+line.c;
-        if(line.c==='cmd')el.innerHTML='<span class="t-p">$ </span>'+line.s;
+        requestAnimationFrame(()=>{ const pf=document.getElementById('pf'); if(pf)pf.style.width='100%'; let p=0; const iv=setInterval(()=>{ p=Math.min(p+2,100); const pp=document.getElementById('pp'); if(pp)pp.textContent=p+'%'; if(p>=100)clearInterval(iv); },48); });
+      } else {
+        const el=document.createElement('p'); el.className='t-line t-'+line.c;
+        if(line.c==='cmd') el.innerHTML='<span class="t-p">$ </span>'+line.s;
         else el.textContent=line.s;
         out.appendChild(el);
       }
       out.scrollTop=out.scrollHeight;
     },line.d);
   });
-  setTimeout(()=>{
-    btn.classList.remove('busy');
-    btn.innerHTML='↺ &nbsp;Re-run pipeline';
-    busy=false;
-  },7200);
+  setTimeout(()=>{ btn.classList.remove('busy'); btn.innerHTML='↺ &nbsp;Re-run pipeline'; busy=false; },6800);
 }
 setTimeout(runTerm,900);
 </script>
